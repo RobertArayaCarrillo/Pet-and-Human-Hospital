@@ -19,9 +19,7 @@ async function main() {
   
   // <CreateClientObjectDatabaseContainer>
   const { endpoint, key, databaseId, containerId } = config;
-
   const client = new CosmosClient({ endpoint, key });
-
   const database = client.database(databaseId);
   const container = database.container(containerId);
 
