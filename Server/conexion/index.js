@@ -1,5 +1,6 @@
-/*const express = require("express")
+const express = require("express")
 const app = express()
+app.use(express.json());
 
 const PORT = 3001;
 const RegistroRoutes = require('./routes/registro')//Ruta de la carpeta que se va a usar 
@@ -8,9 +9,9 @@ app.use('/registro',RegistroRoutes)
 
 app.listen(PORT, () =>{
     console.log(`Server is listening at http://localhost:${PORT}`)
-})*/
+})
 
-const CosmosClient = require('@azure/cosmos').CosmosClient
+/*const CosmosClient = require('@azure/cosmos').CosmosClient
  const config = require('./config')
  const TaskList = require('./tasklist')
  const TaskDao = require('./routes/taskDao')
@@ -80,6 +81,6 @@ const CosmosClient = require('@azure/cosmos').CosmosClient
  })
  app.listen(PORT, () =>{
     console.log(`Server is listening at http://localhost:${PORT}`)
-})
+})*/
 
  module.exports = app

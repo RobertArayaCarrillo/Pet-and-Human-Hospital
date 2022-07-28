@@ -77,8 +77,8 @@ async function main() {
      * Delete item
      * Pass the id and partition key value to delete the item
      */
-    const { resource: result } = await container.item(id, category).delete();
-    console.log(`Deleted item with id: ${id}`);
+    //const { resource: result } = await container.item(id, category).delete();
+   // console.log(`Deleted item with id: ${id}`);
     // </DeleteItem>  
     
   } catch (err) {

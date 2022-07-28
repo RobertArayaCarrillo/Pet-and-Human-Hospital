@@ -1,14 +1,14 @@
 // @ts-check
 
-/*const config = {
+const config = {
   endpoint: "https://myappdbcosmoss.documents.azure.com:443/",
   key: "e50Hqojr9jt4vs4l8AAmjgjeG6BxYxssbg5KFIUvLRUdFBnzRhYqqR56Hr0tCPZjPV5LTVsj5s8ym5Kt2hsJ5w==",
   databaseId: "Hospital_Container",
-  containerId: "Hospital",
+  containerId: "expediente",
   partitionKey: { kind: "Hash", paths: ["/category"] }
 
-};*/
-const config = {};
+};
+/*const config = {};
 
 config.host = process.env.HOST || "https://myappdbcosmoss.documents.azure.com:443/";
 config.authKey =
@@ -21,6 +21,6 @@ if (config.host.includes("https://localhost:")) {
   console.log("WARNING: Disabled checking of self-signed certs. Do not have this code in production.");
   process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
   console.log(`Go to http://localhost:${process.env.PORT || '3001'} to try the sample.`);
-}
+}*/
 
 module.exports = config;
