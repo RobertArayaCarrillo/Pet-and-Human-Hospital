@@ -44,14 +44,15 @@ router.post("/createDatosUsuario", async(req,res) => {
 
     await dbContext.create(client, databaseId, containerId);
      // <QueryItems>
+     console.log(req.body);
      const user = {
       id : req.body.id,
       nombre : req.body.nombre,
       edad : req.body.edad,
       problema : req.body.problema,
       servicio : req.body.servicio,
-      costo : req.body.costo,
-      pagado : req.body.pagado
+      costo :`0`,
+      pagado : `False`
     };
     const querySpec = {
         query: "SELECT * from c"
@@ -60,6 +61,7 @@ router.post("/createDatosUsuario", async(req,res) => {
       .query(querySpec)
       .fetchAll();
     const { resource: createdItem } = await container.items.create(user);
+    res.send("True")
 
 
 })

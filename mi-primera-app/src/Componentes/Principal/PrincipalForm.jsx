@@ -18,13 +18,9 @@ export  function PrincipalForm() {
 
     const onSubmit = async(data) =>{
         try{
-            const response = await axios.post('http://localhost:3001/users/login', data);
+            const response = await axios.post('http://localhost:3001/registro/createDatosUsuario', data);
             //alert(JSON.stringify(response.data[0].storeID))
-            const userLogged = response.data[0].identification
-            const userType = response.data[0].userType
-            const userStoreID = response.data[0].storeID
-
-            loggedIn(userLogged,userType,userStoreID)
+            
 
         } catch(err){
             alert('Invalid User')
@@ -36,16 +32,31 @@ export  function PrincipalForm() {
   return (
       <Fragment>
           <form onSubmit={handleSubmit(onSubmit)}>
+          <div className="mb-3">
+                    <label htmlFor="id" className="form-label">Documento de identidad de la Persona o Animal</label>
+                    <input  className="form-control" id="id" placeholder="Documento Identidad"
+                    {...register('id',{required:true})}/>
+                </div>
                 <div className="mb-3">
                     <label htmlFor="nombre" className="form-label">Nombre Persona o Animal</label>
                     <input  className="form-control" id="nombre" placeholder="Nombre"
                     {...register('nombre',{required:true})}/>
                 </div>
+                <div className="mb-3">
+                    <label htmlFor="edad" className="form-label">Edad de la Persona o Animal</label>
+                    <input  className="form-control" id="edad" placeholder="Edad"
+                    {...register('edad',{required:true})}/>
+                </div>
+                <div className="mb-3">
+                    <label htmlFor="problema" className="form-label">Problema de la Persona o Animal</label>
+                    <input  className="form-control" id="problema" placeholder="Problema"
+                    {...register('problema',{required:true})}/>
+                </div>
                 <br />
                 <div className="col">
                     <label htmlFor="text" className="form-label">Seleccion de Servicio</label>
                     <br />
-                    <select className="form-select" defaultValue="Hospital" aria-label="Servicio"{...register('Servicio',{required:true})}> 
+                    <select className="form-select" defaultValue="Hospital" aria-label="servicio"{...register('servicio',{required:true})}> 
                   
                     <option value= "Hospital">Hospital</option>
                     <option value= 'Vetrinaria'>Veterinaria</option>
