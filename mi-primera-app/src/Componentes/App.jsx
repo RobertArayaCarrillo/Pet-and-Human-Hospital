@@ -6,6 +6,8 @@ import {
     Route
   } from "react-router-dom";
 import { Principal } from './Principal/Principal';
+import { Hospital } from './Hospital/Hospital';
+import { Veterinaria } from './Veterinaria/Veterinaria';
 export function App() {
   return (
       <Router>
@@ -14,6 +16,8 @@ export function App() {
               <Routes>
 
                 <Route exact path="/" element={<Principal />}/>
+                <Route exact path="/Hospital" element={<Hospital />}/>
+                <Route exact path="/Veterinaria" element={<Veterinaria />}/>
 </Routes>
 
             </div>

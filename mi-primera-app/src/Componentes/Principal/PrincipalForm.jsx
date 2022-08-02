@@ -9,24 +9,20 @@ export  function PrincipalForm() {
     const {register,handleSubmit} = useForm();
     //sends parameters to and manages another system
     let navigate = useNavigate()
-    const loggedIn = (userLogged,userType,userStoreID) =>{
+    const loggedIn = (nombre,userType,id) =>{
         let adminPath
-        (userType===3) ? (adminPath='/ClientMenu') : (adminPath='/AdmiMenu') 
-        navigate(adminPath,{state:{user:userLogged,store:userStoreID}})
+        (userType==='Hospital') ? (adminPath='/Hospital') : (adminPath='/Veterinaria') 
+        navigate(adminPath,{state:{nombre:nombre,id:id}})
     }
 
 
     const onSubmit = async(data) =>{
         try{
             const response = await axios.post('http://localhost:3001/registro/createDatosUsuario', data);
-            //alert(JSON.stringify(response.data[0].storeID))
-            
-
+            loggedIn(data.nombre,data.servicio,data.id)
         } catch(err){
             alert('Invalid User')
         }
-
-
     }
 
   return (

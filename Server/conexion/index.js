@@ -4,6 +4,8 @@ app.use(express.json());
 
 const PORT = 3001;
 const RegistroRoutes = require('./routes/registro')//Ruta de la carpeta que se va a usar 
+const cors = require('cors')
+app.use(cors())
 
 app.use('/registro',RegistroRoutes)
 

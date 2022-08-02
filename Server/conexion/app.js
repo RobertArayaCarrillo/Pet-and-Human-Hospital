@@ -7,11 +7,18 @@ const dbContext = require("./data/databaseContext");
 
 //  <DefineNewItem>
 const newItem = {
-  id: "Gabriel",
-  category: "Run",
-  name: "Cosmos DB",
-  description: "Complete Cosmos DB Node.js Quickstart ⚡",
-  isComplete: false
+  id:"1502",
+  nombre:"Pedro",
+  edad:"65",
+  problema:"Me duele",
+  servicio:"hospital"
+};
+const newItem1 = {
+  id:"1502",
+  nombre:"Pedroo",
+  edad:"65",
+  problema:"Me duele",
+  servicio:"hospital"
 };
 //  </DefineNewItem>
 
@@ -22,7 +29,6 @@ async function main() {
   const client = new CosmosClient({ endpoint, key });
   const database = client.database(databaseId);
   const container = database.container(containerId);
-
   // Make sure Tasks database is already setup. If not, create it.
   await dbContext.create(client, databaseId, containerId);
   // </CreateClientObjectDatabaseContainer>
@@ -42,17 +48,17 @@ async function main() {
       .fetchAll();
 
     items.forEach(item => {
-      console.log(`${item.id} - ${item.description}`);
+      console.log(`${item.id} - ${item.nombre}`);
     });
     // </QueryItems>
     
     // <CreateItem>
     /** Create new item
      * newItem is defined at the top of this file
-     */
+     console.log("heree");
     const { resource: createdItem } = await container.items.create(newItem);
-    
-    console.log(`\r\nCreated new item: ${createdItem.id} - ${createdItem.description}\r\n`);
+    console.log("herer");
+    console.log(`\r\nCreated new item: ${createdItem.id} - ${createdItem.nombre}\r\n`);
     // </CreateItem>
     
     // <UpdateItem>
@@ -60,16 +66,28 @@ async function main() {
      * Pull the id and partition key value from the newly created item.
      * Update the isComplete field to true.
      */
-    const { id, category } = createdItem;
+    console.log("here");
+    const {resource:createdItem}  = await container.item(newItem.id,newItem.nombre).replace(newItem1);
+    console.log("here");
+    items.forEach(item => {
+      console.log(`${item.id} - ${item.nombre}`);
+    });
+    console.log("here");
+    /*console.log(createdItem);
+    const { id, nombre } = createdItem;
+    console.log("here2");
+    createdItem.nombre = "Putito";
+    console.log(createdItem.nombre);
+    console.log("here3");
 
     createdItem.isComplete = true;
 
     const { resource: updatedItem } = await container
-      .item(id, category)
+      .item(id, nombre)
       .replace(createdItem);
 
-    console.log(`Updated item: ${updatedItem.id} - ${updatedItem.description}`); 
-    console.log(`Updated isComplete to ${updatedItem.isComplete}\r\n`);
+    console.log(`Updated item: ${updatedItem.id} - ${updatedItem.nombre}`); 
+    //console.log(`Updated isComplete to ${updatedItem.isComplete}\r\n`);
     // </UpdateItem>
     
     // <DeleteItem>    
